@@ -39,6 +39,282 @@
             margin: 0 auto;
         }
 
+        /* Full-screen mode styles */
+        body.fullscreen-mode {
+            padding: 0;
+            background-color: #000;
+            overflow: hidden;
+        }
+
+        body.fullscreen-mode .container {
+            max-width: none;
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        body.fullscreen-mode header,
+        body.fullscreen-mode .card:not(.reader-section),
+        body.fullscreen-mode .reader-header,
+        body.fullscreen-mode .progress-section,
+        body.fullscreen-mode .speed-control,
+        body.fullscreen-mode .settings-section,
+        body.fullscreen-mode .instructions {
+            display: none !important;
+        }
+
+        body.fullscreen-mode .reader-section {
+            display: block !important;
+            flex: 1;
+            background-color: #000;
+            padding: 0;
+            box-shadow: none;
+            border-radius: 0;
+            position: relative;
+        }
+
+        body.fullscreen-mode .reader-display {
+            height: 100vh;
+            margin: 0;
+            border-radius: 0;
+            background-color: #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+        }
+
+        body.fullscreen-mode .word-display {
+            font-size: 6rem;
+            color: #fff;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+            margin: 0;
+            padding: 0;
+            line-height: 1.2;
+        }
+
+        body.fullscreen-mode .orp-highlight {
+            color: #3b82f6;
+            text-shadow: 0 0 15px rgba(59, 130, 246, 0.7);
+        }
+
+        /* Full-screen dropdown menu */
+        .fullscreen-dropdown {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        .dropdown-toggle {
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            border: none;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+        .dropdown-toggle:hover {
+            background-color: rgba(59, 130, 246, 0.9);
+            transform: scale(1.1);
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background-color: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 12px;
+            padding: 16px;
+            min-width: 280px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+            display: none;
+            margin-top: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .dropdown-menu.show {
+            display: block;
+            animation: fadeIn 0.2s ease;
+        }
+
+        .dropdown-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .dropdown-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: white;
+        }
+
+        .dropdown-close {
+            background: none;
+            border: none;
+            color: rgba(255, 255, 255, 0.7);
+            cursor: pointer;
+            font-size: 1.2rem;
+            padding: 4px;
+            border-radius: 4px;
+            transition: var(--transition);
+        }
+
+        .dropdown-close:hover {
+            color: white;
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .dropdown-section {
+            margin-bottom: 20px;
+        }
+
+        .dropdown-label {
+            display: block;
+            margin-bottom: 8px;
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .dropdown-value {
+            display: inline-block;
+            margin-left: 8px;
+            color: var(--primary-color);
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .dropdown-slider {
+            width: 100%;
+            height: 6px;
+            -webkit-appearance: none;
+            appearance: none;
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 3px;
+            outline: none;
+            margin-top: 8px;
+        }
+
+        .dropdown-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 20px;
+            height: 20px;
+            background-color: var(--primary-color);
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        .dropdown-timeline {
+            margin-top: 8px;
+            position: relative;
+            height: 6px;
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        .dropdown-timeline-progress {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            background-color: var(--primary-color);
+            border-radius: 3px;
+            transition: width 0.3s ease;
+        }
+
+        .dropdown-timeline-handle {
+            position: absolute;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 16px;
+            height: 16px;
+            background-color: var(--primary-color);
+            border-radius: 50%;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            cursor: grab;
+        }
+
+        .dropdown-timeline-handle:active {
+            cursor: grabbing;
+        }
+
+        .dropdown-buttons {
+            display: flex;
+            gap: 8px;
+            margin-top: 16px;
+        }
+
+        .dropdown-btn {
+            flex: 1;
+            padding: 10px 16px;
+            background-color: rgba(59, 130, 246, 0.2);
+            color: white;
+            border: 1px solid rgba(59, 130, 246, 0.4);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 500;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+
+        .dropdown-btn:hover {
+            background-color: rgba(59, 130, 246, 0.4);
+        }
+
+        .dropdown-btn.exit {
+            background-color: rgba(239, 68, 68, 0.2);
+            border-color: rgba(239, 68, 68, 0.4);
+        }
+
+        .dropdown-btn.exit:hover {
+            background-color: rgba(239, 68, 68, 0.4);
+        }
+
+        /* Full-screen hint */
+        .fullscreen-hint {
+            position: fixed;
+            bottom: 20px;
+            left: 0;
+            right: 0;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+            z-index: 1000;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        body.fullscreen-mode .fullscreen-hint {
+            opacity: 1;
+        }
 
         header {
             display: flex;
@@ -748,12 +1024,21 @@
                 gap: 12px;
                 align-items: flex-end;
             }
+
+            body.fullscreen-mode .word-display {
+                font-size: 4rem;
+            }
+            
+            .dropdown-menu {
+                min-width: 250px;
+                right: -10px;
+            }
         }
 
 
         @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .fade-in {
@@ -848,6 +1133,49 @@
 </head>
 <body>
     <div class="container">
+        <!-- Full-screen dropdown menu -->
+        <div class="fullscreen-dropdown" id="fullscreen-dropdown">
+            <button class="dropdown-toggle" id="dropdown-toggle" title="Fullscreen controls">
+                <i class="fas fa-cog"></i>
+            </button>
+            <div class="dropdown-menu" id="dropdown-menu">
+                <div class="dropdown-header">
+                    <div class="dropdown-title">Fullscreen Controls</div>
+                    <button class="dropdown-close" id="dropdown-close">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="dropdown-section">
+                    <div class="dropdown-label">
+                        Reading Speed: <span class="dropdown-value" id="dropdown-speed-value">300 WPM</span>
+                    </div>
+                    <input type="range" min="100" max="1000" value="300" class="dropdown-slider" id="dropdown-speed-slider">
+                </div>
+                <div class="dropdown-section">
+                    <div class="dropdown-label">
+                        Progress: <span class="dropdown-value" id="dropdown-progress-value">0%</span>
+                    </div>
+                    <div class="dropdown-timeline" id="dropdown-timeline">
+                        <div class="dropdown-timeline-progress" id="dropdown-timeline-progress"></div>
+                        <div class="dropdown-timeline-handle" id="dropdown-timeline-handle"></div>
+                    </div>
+                </div>
+                <div class="dropdown-buttons">
+                    <button class="dropdown-btn" id="dropdown-play-pause">
+                        <i class="fas fa-play"></i> Play
+                    </button>
+                    <button class="dropdown-btn exit" id="dropdown-exit">
+                        <i class="fas fa-times"></i> Exit
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Full-screen hint -->
+        <div class="fullscreen-hint" id="fullscreen-hint">
+            Press <kbd>F</kbd> or <kbd>ESC</kbd> to exit fullscreen mode
+        </div>
+
         <header>
             <div class="logo">QuickRead</div>
             <div class="theme-panel">
@@ -1007,6 +1335,10 @@
                                 <input type="checkbox" class="setting-checkbox" id="highlight-orp" checked>
                                 <label for="highlight-orp">Highlight middle letter (ORP)</label>
                             </div>
+                            <div class="checkbox-group">
+                                <input type="checkbox" class="setting-checkbox" id="fullscreen-shortcut" checked>
+                                <label for="fullscreen-shortcut">Enable fullscreen shortcut (F key)</label>
+                            </div>
                         </div>
                     </div>
                 </section>
@@ -1037,6 +1369,7 @@
                         <li><span class="feature-icon">✓</span> Save last 3 recent files</li>
                         <li><span class="feature-icon">✓</span> Keyboard shortcuts</li>
                         <li><span class="feature-icon">✓</span> 8 beautiful themes</li>
+                        <li><span class="feature-icon">✓</span> Fullscreen mode with controls (Press F)</li>
                         <li><span class="feature-icon">✓</span> Customizable reading options</li>
                     </ul>
                 </div>
@@ -1053,7 +1386,9 @@
                 <li>Adjust reading speed with the slider (100-1000 words per minute)</li>
                 <li>Click or drag on the progress bar to navigate through the text</li>
                 <li>Toggle the middle letter highlighting for Optimal Recognition Point</li>
-                <li>Use keyboard shortcuts: <kbd>Space</kbd> (play/pause), <kbd>←</kbd>/<kbd>→</kbd> arrows (navigation)</li>
+                <li>Use keyboard shortcuts: <kbd>Space</kbd> (play/pause), <kbd>←</kbd>/<kbd>→</kdb> arrows (navigation), <kbd>F</kbd> (fullscreen)</li>
+                <li><strong>Press <kbd>F</kbd> to enter fullscreen mode</strong> for distraction-free reading</li>
+                <li>In fullscreen mode, click the gear icon for speed and progress controls</li>
                 <li>Switch between 8 beautiful themes using the theme selector</li>
                 <li>Your reading position is automatically saved for each file</li>
             </ul>
@@ -1078,7 +1413,10 @@
             currentDocument: null,
             rawText: '',
             recentFiles: [],
-            fileQueue: []
+            fileQueue: [],
+            isFullscreen: false,
+            fullscreenShortcut: localStorage.getItem('flowread_fullscreen_shortcut') !== 'false',
+            wasPlayingBeforeFullscreen: false
         };
 
        
@@ -1108,6 +1446,7 @@
         const punctuationPauseCheckbox = document.getElementById('punctuation-pause');
         const groupWordsCheckbox = document.getElementById('group-words');
         const highlightORPCheckbox = document.getElementById('highlight-orp');
+        const fullscreenShortcutCheckbox = document.getElementById('fullscreen-shortcut');
         const themeButtons = document.querySelectorAll('.theme-btn');
         const themeTabs = document.querySelectorAll('.theme-tab');
         const documentTitle = document.getElementById('document-title');
@@ -1119,6 +1458,18 @@
         const fileQueueElement = document.getElementById('file-queue');
         const themeSolid = document.getElementById('theme-solid');
         const themeGradient = document.getElementById('theme-gradient');
+        const fullscreenHint = document.getElementById('fullscreen-hint');
+        const dropdownToggle = document.getElementById('dropdown-toggle');
+        const dropdownMenu = document.getElementById('dropdown-menu');
+        const dropdownClose = document.getElementById('dropdown-close');
+        const dropdownSpeedSlider = document.getElementById('dropdown-speed-slider');
+        const dropdownSpeedValue = document.getElementById('dropdown-speed-value');
+        const dropdownTimeline = document.getElementById('dropdown-timeline');
+        const dropdownTimelineProgress = document.getElementById('dropdown-timeline-progress');
+        const dropdownTimelineHandle = document.getElementById('dropdown-timeline-handle');
+        const dropdownPlayPauseBtn = document.getElementById('dropdown-play-pause');
+        const dropdownExitBtn = document.getElementById('dropdown-exit');
+        const dropdownProgressValue = document.getElementById('dropdown-progress-value');
 
         
         const sampleText = `QuickRead is a modern speed reading application designed to help you read faster and with better comprehension. Using Rapid Serial Visual Presentation (RSVP), it displays one word at a time at your chosen speed, eliminating the need for eye movements across the page.
@@ -1335,6 +1686,30 @@
         fileInput.addEventListener('change', handleFileUpload);
         useSampleCheckbox.addEventListener('change', handleSampleToggle);
         clearRecentBtn.addEventListener('click', clearAllRecentFiles);
+        dropdownToggle.addEventListener('click', toggleDropdown);
+        dropdownClose.addEventListener('click', closeDropdown);
+        dropdownSpeedSlider.addEventListener('input', handleDropdownSpeedChange);
+        dropdownPlayPauseBtn.addEventListener('click', togglePlayPause);
+        dropdownExitBtn.addEventListener('click', toggleFullscreen);
+        
+        dropdownTimeline.addEventListener('click', handleDropdownTimelineClick);
+        
+        let isDropdownDragging = false;
+        dropdownTimelineHandle.addEventListener('mousedown', () => {
+            isDropdownDragging = true;
+            document.addEventListener('mousemove', handleDropdownDrag);
+            document.addEventListener('mouseup', () => {
+                isDropdownDragging = false;
+                document.removeEventListener('mousemove', handleDropdownDrag);
+            });
+        });
+        
+        
+        document.addEventListener('click', (e) => {
+            if (!dropdownMenu.contains(e.target) && !dropdownToggle.contains(e.target)) {
+                closeDropdown();
+            }
+        });
         
         
         dropZoneBox.addEventListener('click', (e) => {
@@ -1375,6 +1750,8 @@
         speedSlider.addEventListener('input', () => {
             state.wpm = parseInt(speedSlider.value);
             speedValue.textContent = `${state.wpm} WPM`;
+            dropdownSpeedValue.textContent = `${state.wpm} WPM`;
+            dropdownSpeedSlider.value = state.wpm;
             localStorage.setItem('flowread_wpm', state.wpm);
             if (state.isPlaying) {
                 clearInterval(state.intervalId);
@@ -1436,6 +1813,11 @@
             updateWordDisplay();
         });
 
+        fullscreenShortcutCheckbox.addEventListener('change', () => {
+            state.fullscreenShortcut = fullscreenShortcutCheckbox.checked;
+            localStorage.setItem('flowread_fullscreen_shortcut', state.fullscreenShortcut);
+        });
+
         themeButtons.forEach(button => {
             button.addEventListener('click', () => {
                 const theme = button.getAttribute('data-theme');
@@ -1468,6 +1850,20 @@
                     e.preventDefault();
                     jumpToWord(state.words.length - 1);
                     break;
+                case 'f':
+                case 'F':
+                    if (state.fullscreenShortcut && readerSection.style.display === 'block') {
+                        e.preventDefault();
+                        toggleFullscreen();
+                    }
+                    break;
+                case 'Escape':
+                    if (state.isFullscreen) {
+                        e.preventDefault();
+                        toggleFullscreen();
+                        closeDropdown();
+                    }
+                    break;
             }
         });
 
@@ -1477,6 +1873,168 @@
                 togglePlayPause();
             }
         });
+
+        
+        function toggleDropdown() {
+            dropdownMenu.classList.toggle('show');
+        }
+
+        function closeDropdown() {
+            dropdownMenu.classList.remove('show');
+        }
+
+        function handleDropdownSpeedChange() {
+            state.wpm = parseInt(dropdownSpeedSlider.value);
+            speedValue.textContent = `${state.wpm} WPM`;
+            dropdownSpeedValue.textContent = `${state.wpm} WPM`;
+            speedSlider.value = state.wpm;
+            localStorage.setItem('flowread_wpm', state.wpm);
+            if (state.isPlaying) {
+                clearInterval(state.intervalId);
+                startReading();
+            }
+        }
+
+        function handleDropdownTimelineClick(e) {
+            const rect = dropdownTimeline.getBoundingClientRect();
+            const clickPosition = (e.clientX - rect.left) / rect.width;
+            const newIndex = Math.floor(clickPosition * state.words.length);
+            jumpToWord(newIndex);
+        }
+
+        function handleDropdownDrag(e) {
+            if (!isDropdownDragging) return;
+            
+            const rect = dropdownTimeline.getBoundingClientRect();
+            let clientX = e.clientX;
+            let relativeX = clientX - rect.left;
+            relativeX = Math.max(0, Math.min(relativeX, rect.width));
+            
+            const progress = relativeX / rect.width;
+            const newIndex = Math.floor(progress * state.words.length);
+            
+            jumpToWord(newIndex);
+        }
+
+        
+        function toggleFullscreen() {
+            if (!state.isFullscreen) {
+                enterFullscreen();
+            } else {
+                exitFullscreen();
+            }
+        }
+
+        function enterFullscreen() {
+            if (state.words.length === 0) {
+                showUploadStatus("Please load text first before entering fullscreen mode", "error");
+                return;
+            }
+            
+            
+            state.wasPlayingBeforeFullscreen = state.isPlaying;
+            
+            state.isFullscreen = true;
+            document.body.classList.add('fullscreen-mode');
+            
+            
+            updateWordDisplayForFullscreen();
+            updateDropdownControls();
+            
+            showUploadStatus("Entered fullscreen mode. Click the gear icon for controls.", "info");
+        }
+
+        function exitFullscreen() {
+            state.isFullscreen = false;
+            document.body.classList.remove('fullscreen-mode');
+            
+            
+            if (state.wasPlayingBeforeFullscreen && !state.isPlaying) {
+                startReading();
+            }
+            
+            
+            updateWordDisplay();
+            closeDropdown();
+            
+            showUploadStatus("Exited fullscreen mode", "info");
+        }
+
+        function updateWordDisplayForFullscreen() {
+            if (state.words.length === 0) {
+                wordDisplay.textContent = "No text loaded";
+                return;
+            }
+            
+            const word = state.words[state.currentWordIndex];
+            wordDisplay.classList.remove('fade-in');
+            
+            
+            wordDisplay.style.fontSize = '6rem';
+            wordDisplay.style.color = '#fff';
+            wordDisplay.style.textAlign = 'center';
+            wordDisplay.style.padding = '0';
+            wordDisplay.style.margin = '0';
+            wordDisplay.style.lineHeight = '1.2';
+            wordDisplay.style.width = '100%';
+            wordDisplay.style.display = 'flex';
+            wordDisplay.style.alignItems = 'center';
+            wordDisplay.style.justifyContent = 'center';
+            wordDisplay.style.height = '100%';
+            
+            if (state.highlightORP) {
+                
+                let orpIndex = Math.floor(word.length / 2);
+                if (word.length <= 3) orpIndex = 1;
+                
+                
+                let displayWord = '';
+                if (word === '\n') {
+                    displayWord = '<br><span class="orp-highlight">¶</span>';
+                } else {
+                    for (let i = 0; i < word.length; i++) {
+                        if (i === orpIndex) {
+                            displayWord += `<span class="orp-highlight">${word[i]}</span>`;
+                        } else {
+                            displayWord += word[i];
+                        }
+                    }
+                }
+                
+                wordDisplay.innerHTML = displayWord;
+            } else {
+                
+                if (word === '\n') {
+                    wordDisplay.innerHTML = '<br>¶';
+                } else {
+                    wordDisplay.textContent = word;
+                }
+            }
+            
+            
+            setTimeout(() => {
+                wordDisplay.classList.add('fade-in');
+            }, 10);
+        }
+
+        function updateDropdownControls() {
+            
+            dropdownSpeedSlider.value = state.wpm;
+            dropdownSpeedValue.textContent = `${state.wpm} WPM`;
+            
+            
+            const progress = (state.currentWordIndex + 1) / state.words.length * 100;
+            dropdownTimelineProgress.style.width = `${progress}%`;
+            dropdownTimelineHandle.style.left = `${progress}%`;
+            dropdownProgressValue.textContent = `${Math.round(progress)}%`;
+            
+            
+            if (state.isPlaying) {
+                dropdownPlayPauseBtn.innerHTML = '<i class="fas fa-pause"></i> Pause';
+            } else {
+                dropdownPlayPauseBtn.innerHTML = '<i class="fas fa-play"></i> Play';
+            }
+        }
 
         
         function handleSampleToggle() {
@@ -1570,6 +2128,7 @@
             
             updateWordDisplay();
             updateProgress();
+            updateDropdownControls();
             
             
             readerSection.style.display = 'block';
@@ -1611,6 +2170,7 @@
             
             state.isPlaying = true;
             playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
+            dropdownPlayPauseBtn.innerHTML = '<i class="fas fa-pause"></i> Pause';
             
             const intervalMs = 60000 / state.wpm;
             state.intervalId = setInterval(() => {
@@ -1626,6 +2186,7 @@
             state.isPlaying = false;
             clearInterval(state.intervalId);
             playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
+            dropdownPlayPauseBtn.innerHTML = '<i class="fas fa-play"></i> Play';
             
            
             if (state.currentDocument) {
@@ -1637,8 +2198,15 @@
             const newIndex = state.currentWordIndex + direction;
             if (newIndex >= 0 && newIndex < state.words.length) {
                 state.currentWordIndex = newIndex;
-                updateWordDisplay();
+                
+                if (state.isFullscreen) {
+                    updateWordDisplayForFullscreen();
+                } else {
+                    updateWordDisplay();
+                }
+                
                 updateProgress();
+                updateDropdownControls();
                 
                 
                 if (state.isPlaying && state.punctuationPause) {
@@ -1688,8 +2256,15 @@
         function jumpToWord(index) {
             index = Math.max(0, Math.min(index, state.words.length - 1));
             state.currentWordIndex = index;
-            updateWordDisplay();
+            
+            if (state.isFullscreen) {
+                updateWordDisplayForFullscreen();
+            } else {
+                updateWordDisplay();
+            }
+            
             updateProgress();
+            updateDropdownControls();
             
             if (state.isPlaying) {
                 clearInterval(state.intervalId);
@@ -1709,6 +2284,19 @@
             
             const word = state.words[state.currentWordIndex];
             wordDisplay.classList.remove('fade-in');
+            
+            
+            wordDisplay.style.fontSize = `${state.fontSize}rem`;
+            wordDisplay.style.color = '';
+            wordDisplay.style.textAlign = 'center';
+            wordDisplay.style.padding = '20px';
+            wordDisplay.style.margin = '';
+            wordDisplay.style.lineHeight = '';
+            wordDisplay.style.width = '';
+            wordDisplay.style.display = '';
+            wordDisplay.style.alignItems = '';
+            wordDisplay.style.justifyContent = '';
+            wordDisplay.style.height = '';
             
             if (state.highlightORP) {
                 
@@ -1811,12 +2399,15 @@
         
         speedSlider.value = state.wpm;
         speedValue.textContent = `${state.wpm} WPM`;
+        dropdownSpeedSlider.value = state.wpm;
+        dropdownSpeedValue.textContent = `${state.wpm} WPM`;
         fontSizeSelect.value = state.fontSize;
         fontFamilySelect.value = state.fontFamily;
         autoPauseCheckbox.checked = state.autoPause;
         punctuationPauseCheckbox.checked = state.punctuationPause;
         groupWordsCheckbox.checked = state.groupWords;
         highlightORPCheckbox.checked = state.highlightORP;
+        fullscreenShortcutCheckbox.checked = state.fullscreenShortcut;
         wordDisplay.style.fontSize = `${state.fontSize}rem`;
         wordDisplay.style.fontFamily = state.fontFamily;
     </script>
