@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<!-- Combined Enhanced Version: All features from both implementations -->
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -8,9 +7,6 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* =====================
-           CORE VARIABLES
-        ===================== */
         :root {
             --primary-color: #3b82f6;
             --bg-color: #ffffff;
@@ -43,9 +39,7 @@
             margin: 0 auto;
         }
 
-        /* =====================
-           HEADER + THEME TABS
-        ===================== */
+
         header {
             display: flex;
             justify-content: space-between;
@@ -117,9 +111,7 @@
             box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
         }
 
-        /* =====================
-           GRADIENT THEME PREVIEWS
-        ===================== */
+
         .theme-ocean { background: linear-gradient(135deg, #0ea5e9, #2563eb); }
         .theme-sunset { background: linear-gradient(135deg, #fb7185, #f97316); }
         .theme-forest { background: linear-gradient(135deg, #22c55e, #065f46); }
@@ -129,9 +121,7 @@
         .theme-sepia { background-color: #f5e9d9; }
         .theme-high-contrast { background-color: #000000; }
 
-        /* =====================
-           LAYOUT
-        ===================== */
+
         .main-content {
             display: grid;
             grid-template-columns: 2fr 1fr;
@@ -151,9 +141,7 @@
             box-shadow: var(--shadow);
         }
 
-        /* =====================
-           ENHANCED DROP ZONE
-        ===================== */
+
         .drop-zone-box {
             border: 3px dashed var(--border-color);
             border-radius: var(--radius);
@@ -293,7 +281,7 @@
             font-size: 0.9rem;
         }
 
-        /* File Queue */
+
         .file-queue {
             margin-top: 24px;
             display: flex;
@@ -341,7 +329,7 @@
             transition: width 0.3s ease;
         }
 
-        /* Recent Files Panel */
+        
         .recent-header {
             display: flex;
             justify-content: space-between;
@@ -454,9 +442,7 @@
             color: var(--border-color);
         }
 
-        /* =====================
-           READER SECTION
-        ===================== */
+
         .reader-section {
             display: none;
             grid-column: 1 / -1;
@@ -670,9 +656,7 @@
             margin-bottom: 8px;
         }
 
-        /* =====================
-           THEMES (VARIABLE OVERRIDES)
-        ===================== */
+
         .theme-dark-active {
             --bg-color: #0f172a;
             --text-color: #f8fafc;
@@ -728,7 +712,7 @@
             --primary-color: #a78bfa;
         }
 
-        /* Mobile responsiveness */
+        
         @media (max-width: 768px) {
             .reader-header {
                 flex-direction: column;
@@ -766,7 +750,7 @@
             }
         }
 
-        /* Animation for word transition */
+
         @keyframes fadeIn {
             from { opacity: 0; }
             to { opacity: 1; }
@@ -776,7 +760,7 @@
             animation: fadeIn 0.1s ease;
         }
 
-        /* Upload status */
+
         .upload-status {
             margin-top: 16px;
             padding: 12px;
@@ -801,7 +785,7 @@
             border-left-color: var(--primary-color);
         }
 
-        /* File type badges */
+        
         .file-badge {
             display: inline-block;
             padding: 2px 8px;
@@ -826,7 +810,7 @@
             color: #166534;
         }
 
-        /* Sample text toggle */
+        
         .sample-toggle {
             margin-top: 20px;
             padding: 16px;
@@ -835,7 +819,7 @@
             border: 1px solid var(--border-color);
         }
 
-        /* Quality of Life sidebar */
+        
         .qol-features ul {
             padding-left: 20px;
             margin-top: 12px;
@@ -1077,7 +1061,7 @@
     </div>
 
     <script>
-        // Application state
+        
         const state = {
             words: [],
             sentences: [],
@@ -1097,7 +1081,7 @@
             fileQueue: []
         };
 
-        // DOM Elements
+       
         const fileInput = document.getElementById('file-input');
         const uploadBtn = document.getElementById('upload-btn');
         const dropZoneBox = document.getElementById('drop-zone-box');
@@ -1136,7 +1120,7 @@
         const themeSolid = document.getElementById('theme-solid');
         const themeGradient = document.getElementById('theme-gradient');
 
-        // Sample text for demonstration
+        
         const sampleText = `QuickRead is a modern speed reading application designed to help you read faster and with better comprehension. Using Rapid Serial Visual Presentation (RSVP), it displays one word at a time at your chosen speed, eliminating the need for eye movements across the page.
 
         This method allows you to focus on the content without distractions. The application highlights the Optimal Recognition Point (ORP) in each word, typically around the middle of the word, to help your brain process it more quickly.
@@ -1145,9 +1129,9 @@
 
         For best results, start at a comfortable speed (around 300 WPM) and gradually increase as you become more accustomed to the RSVP method. Remember to take breaks to avoid eye strain and maintain focus.
 
-        Speed reading techniques like RSVP can significantly increase your reading speed while maintaining or even improving comprehension. With practice, many users can double or triple their reading speed.`;
+        Speed reading techniques like RSVP can significantly increase your reading speed while maintaining or even improving comprehension. With practice, many users can double or triple their reading speed. Made by Ossian`;
 
-        // Initialize theme tabs
+       
         themeTabs.forEach(tab => {
             tab.addEventListener('click', () => {
                 themeTabs.forEach(t => t.classList.remove('active'));
@@ -1158,7 +1142,7 @@
             });
         });
 
-        // Load recent files from localStorage
+        
         function loadRecentFiles() {
             const savedRecentFiles = localStorage.getItem('flowread_recent_files');
             if (savedRecentFiles) {
@@ -1167,20 +1151,20 @@
             }
         }
 
-        // Save recent files to localStorage
+        
         function saveRecentFiles() {
             localStorage.setItem('flowread_recent_files', JSON.stringify(state.recentFiles));
         }
 
-        // Add file to recent files list
+        
         function addToRecentFiles(fileName, content, fileType, isSample = false) {
-            // Remove if already exists
+            
             state.recentFiles = state.recentFiles.filter(file => file.name !== fileName);
             
-            // Add to beginning of array
+            
             state.recentFiles.unshift({
                 name: fileName,
-                content: content.substring(0, 10000), // Store first 10k chars for preview
+                content: content.substring(0, 10000), 
                 type: fileType,
                 isSample: isSample,
                 date: new Date().toISOString(),
@@ -1188,7 +1172,7 @@
                 charCount: content.length
             });
             
-            // Keep only 3 most recent files
+            
             if (state.recentFiles.length > 3) {
                 state.recentFiles = state.recentFiles.slice(0, 3);
             }
@@ -1197,7 +1181,7 @@
             renderRecentFiles();
         }
 
-        // Render recent files list
+        
         function renderRecentFiles() {
             if (state.recentFiles.length === 0) {
                 recentEmpty.style.display = 'block';
@@ -1239,7 +1223,7 @@
             
             recentList.innerHTML = html;
             
-            // Add event listeners to recent items
+            
             document.querySelectorAll('.recent-item').forEach(item => {
                 item.addEventListener('click', (e) => {
                     if (!e.target.classList.contains('recent-remove') && !e.target.closest('.recent-remove')) {
@@ -1249,7 +1233,7 @@
                 });
             });
             
-            // Add event listeners to remove buttons
+            
             document.querySelectorAll('.recent-remove').forEach(btn => {
                 btn.addEventListener('click', (e) => {
                     e.stopPropagation();
@@ -1259,14 +1243,14 @@
             });
         }
 
-        // Load a recent file
+        
         function loadRecentFile(index) {
             if (index >= 0 && index < state.recentFiles.length) {
                 const file = state.recentFiles[index];
                 initializeText(file.content, file.name);
                 showUploadStatus(`"${file.name}" loaded from recent files`, "success");
                 
-                // Move to top of recent files
+                
                 const [movedFile] = state.recentFiles.splice(index, 1);
                 state.recentFiles.unshift(movedFile);
                 saveRecentFiles();
@@ -1274,7 +1258,7 @@
             }
         }
 
-        // Remove a recent file
+        
         function removeRecentFile(index) {
             if (index >= 0 && index < state.recentFiles.length) {
                 state.recentFiles.splice(index, 1);
@@ -1284,7 +1268,7 @@
             }
         }
 
-        // Clear all recent files
+        
         function clearAllRecentFiles() {
             state.recentFiles = [];
             saveRecentFiles();
@@ -1292,7 +1276,7 @@
             showUploadStatus("All recent files cleared", "info");
         }
 
-        // Get time ago string
+        
         function getTimeAgo(date) {
             const now = new Date();
             const diffMs = now - date;
@@ -1307,7 +1291,7 @@
             return date.toLocaleDateString();
         }
 
-        // Show file in queue
+        
         function addToFileQueue(file) {
             const row = document.createElement('div');
             row.className = 'file-row';
@@ -1322,12 +1306,12 @@
             row.appendChild(prog);
             fileQueueElement.appendChild(row);
             
-            // Animate progress bar
+            
             setTimeout(() => {
                 bar.style.width = '100%';
             }, 10);
             
-            // Remove after 3 seconds
+            
             setTimeout(() => {
                 row.style.opacity = '0';
                 row.style.transform = 'translateX(-20px)';
@@ -1339,22 +1323,22 @@
             state.fileQueue.push(file);
         }
 
-        // Initialize with sample text if checked
+        
         loadRecentFiles();
         if (useSampleCheckbox.checked) {
             initializeText(sampleText, "Sample Text");
             addToRecentFiles("Sample Text", sampleText, "txt", true);
         }
 
-        // Event Listeners
+        
         uploadBtn.addEventListener('click', () => fileInput.click());
         fileInput.addEventListener('change', handleFileUpload);
         useSampleCheckbox.addEventListener('change', handleSampleToggle);
         clearRecentBtn.addEventListener('click', clearAllRecentFiles);
         
-        // Enhanced drag and drop for the drop zone box
+        
         dropZoneBox.addEventListener('click', (e) => {
-            // Only trigger file input if clicking directly on the box (not on buttons inside)
+            
             if (e.target === dropZoneBox || e.target.classList.contains('fa-file-upload')) {
                 fileInput.click();
             }
@@ -1459,7 +1443,7 @@
             });
         });
 
-        // Keyboard shortcuts
+        
         document.addEventListener('keydown', (e) => {
             if (e.target.tagName === 'INPUT' || e.target.tagName === 'SELECT' || e.target.tagName === 'TEXTAREA') return;
             
@@ -1487,21 +1471,21 @@
             }
         });
 
-        // Auto-pause when window loses focus
+        
         window.addEventListener('blur', () => {
             if (state.autoPause && state.isPlaying) {
                 togglePlayPause();
             }
         });
 
-        // Functions
+        
         function handleSampleToggle() {
             if (useSampleCheckbox.checked) {
                 initializeText(sampleText, "Sample Text");
                 addToRecentFiles("Sample Text", sampleText, "txt", true);
                 showUploadStatus("Sample text loaded successfully", "success");
             } else {
-                // If we're currently viewing the sample text, clear it
+                
                 if (state.currentDocument === "Sample Text") {
                     state.words = [];
                     state.sentences = [];
@@ -1509,7 +1493,7 @@
                     updateWordDisplay();
                     updateProgress();
                     
-                    // Hide reader section
+                    
                     readerSection.style.display = 'none';
                     uploadSection.style.display = 'block';
                 }
@@ -1520,12 +1504,12 @@
             const files = event.target.files;
             if (!files.length) return;
             
-            // Add all files to queue
+            
             Array.from(files).forEach(file => {
                 addToFileQueue(file);
             });
             
-            // Process first file
+            
             const file = files[0];
             const fileName = file.name;
             const fileExtension = fileName.split('.').pop().toLowerCase();
@@ -1540,7 +1524,7 @@
                 };
                 reader.readAsText(file);
             } else if (fileExtension === 'pdf') {
-                // For this demo, we'll simulate PDF parsing
+                
                 showUploadStatus("PDF parsing is simulated in this demo. Loading sample text instead.", "info");
                 initializeText(sampleText, fileName);
                 addToRecentFiles(fileName, sampleText, "pdf");
@@ -1548,7 +1532,7 @@
                 showUploadStatus("Please upload a .txt or .pdf file.", "error");
             }
             
-            // Reset file input
+            
             fileInput.value = '';
         }
 
@@ -1558,24 +1542,24 @@
             uploadStatus.classList.add(type);
             uploadStatus.style.display = "block";
             
-            // Auto-hide after 5 seconds
+            
             setTimeout(() => {
                 uploadStatus.style.display = "none";
             }, 5000);
         }
 
         function initializeText(text, title) {
-            // Clean the text
+            
             const cleanedText = cleanText(text);
             state.rawText = cleanedText;
             
-            // Split into sentences
+           
             state.sentences = cleanedText.split(/(?<=[.!?])\s+/).filter(s => s.trim().length > 0);
             
-            // Split into words
+            
             state.words = tokenizeText(cleanedText);
             
-            // Load last position if available
+            
             const savedPosition = localStorage.getItem('flowread_last_position_' + title);
             if (savedPosition) {
                 state.currentWordIndex = parseInt(savedPosition);
@@ -1583,31 +1567,31 @@
                 state.currentWordIndex = 0;
             }
             
-            // Update UI
+            
             updateWordDisplay();
             updateProgress();
             
-            // Show reader section
+            
             readerSection.style.display = 'block';
             
-            // Update title
+            
             documentTitle.textContent = `Reading: ${title}`;
             
-            // Save document title for position saving
+            
             state.currentDocument = title;
         }
 
         function cleanText(text) {
-            // Remove page numbers, headers, footers, and excessive whitespace
+            
             return text
-                .replace(/\n{3,}/g, '\n\n') // Replace 3+ newlines with 2
-                .replace(/\t/g, ' ') // Replace tabs with spaces
-                .replace(/\s{2,}/g, ' ') // Replace multiple spaces with single space
+                .replace(/\n{3,}/g, '\n\n') 
+                .replace(/\t/g, ' ') 
+                .replace(/\s{2,}/g, ' ') 
                 .trim();
         }
 
         function tokenizeText(text) {
-            // Simple tokenization - split by spaces and punctuation
+            
             const tokens = text.match(/\S+|\n/g) || [];
             return tokens;
         }
@@ -1643,7 +1627,7 @@
             clearInterval(state.intervalId);
             playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
             
-            // Save current position
+           
             if (state.currentDocument) {
                 localStorage.setItem('flowread_last_position_' + state.currentDocument, state.currentWordIndex);
             }
@@ -1656,11 +1640,11 @@
                 updateWordDisplay();
                 updateProgress();
                 
-                // Check if we should pause for punctuation
+                
                 if (state.isPlaying && state.punctuationPause) {
                     const currentWord = state.words[state.currentWordIndex];
                     if (/[.!?;:]$/.test(currentWord)) {
-                        // Briefly pause for punctuation
+                        
                         clearInterval(state.intervalId);
                         setTimeout(() => {
                             if (state.isPlaying) {
@@ -1673,7 +1657,7 @@
         }
 
         function moveSentence(direction) {
-            // Find current sentence index
+            
             let currentSentenceEnd = 0;
             let sentenceIndex = 0;
             
@@ -1687,10 +1671,10 @@
                 }
             }
             
-            // Move to next/previous sentence
+            
             const newSentenceIndex = sentenceIndex + direction;
             if (newSentenceIndex >= 0 && newSentenceIndex < state.sentences.length) {
-                // Calculate word index for start of the sentence
+                
                 let wordIndex = 0;
                 for (let i = 0; i < newSentenceIndex; i++) {
                     const sentenceWords = tokenizeText(state.sentences[i]);
@@ -1727,11 +1711,11 @@
             wordDisplay.classList.remove('fade-in');
             
             if (state.highlightORP) {
-                // Calculate ORP (Optimal Recognition Point) - typically around the middle of the word
+                
                 let orpIndex = Math.floor(word.length / 2);
                 if (word.length <= 3) orpIndex = 1;
                 
-                // Create HTML with ORP highlighted
+                
                 let displayWord = '';
                 if (word === '\n') {
                     displayWord = '<br><span class="orp-highlight">¶</span>';
@@ -1747,7 +1731,7 @@
                 
                 wordDisplay.innerHTML = displayWord;
             } else {
-                // Display word without ORP highlighting
+                
                 if (word === '\n') {
                     wordDisplay.innerHTML = '<br>¶';
                 } else {
@@ -1755,7 +1739,7 @@
                 }
             }
             
-            // Trigger animation
+            
             setTimeout(() => {
                 wordDisplay.classList.add('fade-in');
             }, 10);
@@ -1773,7 +1757,7 @@
             currentPosition.textContent = `Word ${state.currentWordIndex + 1} of ${state.words.length}`;
             percentageRead.textContent = `${Math.round(progress)}%`;
             
-            // Calculate time remaining
+            
             const wordsRemaining = state.words.length - state.currentWordIndex;
             const minutesRemaining = wordsRemaining / state.wpm;
             const minutes = Math.floor(minutesRemaining);
@@ -1803,15 +1787,15 @@
         }
 
         function setTheme(theme) {
-            // Remove all theme classes
+            
             document.body.className = '';
             
-            // Add the new theme class
+            
             if (theme !== 'light') {
                 document.body.classList.add(`theme-${theme}-active`);
             }
             
-            // Update active button
+            
             themeButtons.forEach(button => {
                 button.classList.toggle('active', button.dataset.theme === theme);
             });
@@ -1820,11 +1804,11 @@
             localStorage.setItem('flowread_theme', theme);
         }
 
-        // Load saved settings
+        
         const savedTheme = localStorage.getItem('flowread_theme') || 'light';
         setTheme(savedTheme);
 
-        // Initialize UI with saved settings
+        
         speedSlider.value = state.wpm;
         speedValue.textContent = `${state.wpm} WPM`;
         fontSizeSelect.value = state.fontSize;
